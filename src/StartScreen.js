@@ -6,7 +6,6 @@ import VaultBoy from "./images/vault-boy-wanted.jpg";
 import Samus from "./images/samus-wanted.jpg";
 
 const StartScreen = () => {
-
     const disclaimer = {
             fontSize: 20,
             fontStyle: 'italic'
@@ -28,10 +27,11 @@ return (
 
         <div className="instructions">
             <p style={disclaimer}><i>Note: Characters are not in the same pose as wanted posters</i></p>
+            <Link to="/GameBoard" >
             <button id="game-start" className="start-button">START GAME</button>
+            </Link>
         </div>
     </div>
 );
 }
-
 export default StartScreen;
