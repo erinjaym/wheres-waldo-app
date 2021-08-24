@@ -1,8 +1,7 @@
 import './App.css';
-import './fonts/arcade-regular.ttf';
-import StartScreen from "./StartScreen";
-import SF from './images/sfpic.png';
-import GameBoard from './GameBoard';
+import './components/fonts/arcade-regular.ttf';
+import StartScreen from "./components/StartScreen";
+import GameBoard from './components/GameBoard';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {

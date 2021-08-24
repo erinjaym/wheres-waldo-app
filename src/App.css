@@ -1,7 +1,7 @@
 @font-face {
     font-family: "ArcadeRegular";
     src: local("ArcadeRegular"),
-    url("./fonts/arcade-regular.ttf") format("truetype");
+    url("./components/fonts/arcade-regular.ttf") format("truetype");
   }
   
 body {
