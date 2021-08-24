@@ -6,6 +6,7 @@ import GameBoard from './GameBoard';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
+
   return (
     <BrowserRouter >    
     <div>

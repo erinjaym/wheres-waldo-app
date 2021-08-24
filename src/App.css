@@ -92,40 +92,55 @@ border-radius: 50%;
 display: none;
 }
 
-.gameboard-container {
+.game-container {
     width: 1712px;
     height: 1528px;
-    background-color: rgba(103, 105, 105, 0.527);
-    border: 10px red solid;
-    display: grid;
-    grid-template-columns: repeat(23, 1fr);
-    grid-template-rows: repeat(21, 1fr);
-    grid-gap: 0px;
-    grid-auto-flow: row;
-    position: relative;
+    background-color: rgba(103, 105, 105, 0);
+    border: 20px rgb(172, 24, 4) solid;
     z-index: 2;  
+    position: absolute;
     top: 0;  
-    left: 0%;  
+    left: 0;  
 }
 
-.main-image{
-  padding-right: 10px;
-  padding-bottom: 10px;
-  top: 10px;
-  left: 10px;
-  position: absolute;
-  
+.game-image{
+  top: 0px;
+  left: 0px;
+  position: relative;
   }
   
+  .scrolled {
+    background-color: lightgreen;
+    position: fixed;
+    top: 0;
+    transition: all 0.2s ease-in;
+  }
 
-.image-underlay{
-border: 2px solid red;
-height: calc(1528px / 21px);
-width: calc(1712px / 23px);
-}
 
-.image-underlay-tag{
-  border: 5px solid rgb(195, 0, 255);
-  height: calc(1528px / 21px);
-  width: calc(1712px / 23px);
+
+
+  .tag-frame{
+    border: 5px solid rgb(229, 231, 231);
+    height: 100px;
+    width: 100px;
+  }
+
+  .tag-options{
+  color: white;
+  background: grey;
+  font-size: 1.3em;
+  text-align: center;
+  width: 110px;
+  }
+
+  .tag-options li{
+    border: 1px black solid;
+    list-style-type: none;
+  }
+
+  .tag-options li:hover{
+    background: white;
+    border: 1px black solid;
+    color: black;
+    list-style-type: none;
   }
