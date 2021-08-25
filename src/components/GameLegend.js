@@ -16,18 +16,18 @@ return (
 <div id="legend" className="legend">
     <img src={Assignment} />
 
-    <p><center>Who you need to hunt!</center></p>
+    <p style={ {textAlign: "center"} }> Who you need to hunt!</p>
     <li>
     Samus   <br /> 
-   <hint><img id="hint-pic" className="hint-pic" src={SamusHint} /> </hint>
+   <div id="hint1"><img id="hint-pic" className="hint-pic" src={SamusHint} /> </div>
     </li>
     <li>
     Vault Boy <br />
-    <hint><img id="hint-pic" className="hint-pic" src={VaultBoyHint} /> </hint>
+    <div id="hint2"><img id="hint-pic" className="hint-pic" src={VaultBoyHint} /> </div>
     </li>
     <li>
     Boba Fett<br />
-    <hint><img id="hint-pic" className="hint-pic" src={BobaHint} /> </hint>
+    <div id="hint3"><img id="hint-pic" className="hint-pic" src={BobaHint} /> </div>
     </li><br />
     <li>
     <a href="#" onClick={() => showHints()}>SHOW HINTS</a> <a href="#" >HIDE HINTS</a>

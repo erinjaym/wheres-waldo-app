@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import './fonts/arcade-regular.ttf';
 import SF from './images/sfpic.png';
 import { useState, useEffect } from "react";
-import Assignment from "./images/assignment.svg";
 import GameLegend from "./GameLegend";
 import TagBox from "./TagBox";
 
@@ -11,66 +10,59 @@ const GameBoard = (props) => {
 
     const [xPosition, setXPosition ] = useState(0);
     const [yPosition, setYPosition ] = useState(0); 
-    let picHeight = 1528;
-    let picWidth = 1712; // adjusted for left border
-    // adjust tagBox location .... show tagbox and then hide on unmount? 
-    // there is a memory leak do to this that is killing the game!!
 
-    function adjustHorizontal(horizStart){  // need to adjust for click along border as well 
-        if ( horizStart < 0 ){ //adjust position to account for left border
-          return 0;
-        }else if(horizStart < 100){ // if selection point is near edge 
-            return 0;
-        }else if (horizStart >= picWidth){ // adjust position to account for right border and frame border pixels
-          return (picWidth - 105);
-        }else if (horizStart > (picWidth - 105)){ // adjust for clicks along right edge and frame border pixels
-            console.log("ran this");
-            return (picWidth - 105);
-        }else{ //middle of board clicks
-          return (horizStart - 50);
+    const [yScrolled, setYScrolled] = useState(0);
+    const [xScrolled, setXScrolled] = useState(0);
+
+    const [scrolled, setScrolled] = useState(false); // to be used with legend implementation with
+
+    const [selectionMade, setSelectionMade] = useState(true);
+
+
+    const handleScroll = () => { 
+        const yOffset = window.scrollY;
+        const xOffset = window.scrollX;
+        if( yOffset >=0 ){
+            setYScrolled(yOffset);
         }
-      }
-    
-      function adjustVertical (vertStart) {
-        if (vertStart < 0){ // if clicking on top border
-            return 0;
-        }else if (vertStart >= picHeight){ // if clicking on bottom border 
-            return (picHeight - 100);
-        }else if(vertStart < 100){ // if selected point is near an edge 
-            return 0;
-        }else{  // clicks in middle of gameboard
-            return (vertStart - 50);
+        if( xOffset >= 0){
+            setXScrolled( xOffset );
         }
     }
 
-    // change name to setCoords  // need to remove listeners after use ... this keeps making them 
-    function setTagLocation () {
-        const setCoord = document.addEventListener("click", (e) => {
+      useEffect(() => {
+        window.addEventListener("scroll", handleScroll); 
+        return function cleanup () {
+            window.removeEventListener("scroll", handleScroll);
+            }
+      });
 
-            let xPos = e.clientX -20; // -20 to account for image border on left
-            let yPos = e.clientY -20; // -20 to account for image border on top
-            xPos = adjustHorizontal(xPos); // center box on selection
-            yPos = adjustVertical(yPos);
-            console.log("settingCoord" + (xPos) + (yPos));
-            setXPosition(xPos);
-            setYPosition(yPos);
-        });
+      useEffect(() => {
+      const handleClick = (e) => {
+        let xPos = e.clientX -20; // -20 to account for image border on left (only applicable before x scroll) 
+        let yPos = e.clientY -20; // -20 to account for image border on top (only applicable before y scroll 
+        xPos = ((xPos + xScrolled)); // center box on selection
+        yPos = ((yPos + yScrolled));
+        return setXPosition(xPos), setYPosition(yPos), setSelectionMade(true);
+      };
+         document.addEventListener("click", handleClick);
+        return function cleanup () {
+        document.removeEventListener("click", handleClick);
     }
+  });
 
-    //    add to code after image map implement<div id="legend-"><GameLegend /></div>
+
     // make a sticky legend. + a sticky zoom  
 return (
     <div id="game-container" className="game-container">
+        <GameLegend />
          <img className="game-image" alt="science fiction character collage" src={SF} useMap="#sfmap" /> 
 <map name="sfmap">
-  <area shape="rect" coords="20,20,1732,1548" alt="tagging area" onClick={setTagLocation}/>
+  <area shape="rect" coords="20,20,1732,1548" alt="tagging area"/>
   <area shape="rect" coords="" alt="samus" alt=""></area>
 </map>
 
-<TagBox verticalPosition={yPosition} horizontalPosition={xPosition}/>
-<div><p>
-    Extra stuff under everything to test scroll click this should be outside of the image map</p>
-    </div>
+<TagBox verticalPosition={yPosition} horizontalPosition={xPosition} selectionMade={selectionMade}/>
     </div>
 
 );
