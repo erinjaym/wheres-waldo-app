@@ -17,15 +17,13 @@ useEffect(() => {
     setTagBoxDisplay("block");
   }
 
-});
+},[ showTagBox ]);
 
 function adjustHorizontalDisplay(horizStart){  // need to adjust for click along border as well 
     if ( horizStart < 80){ //adjust position to account for left border
       return 0; // pic is 0 - 1712 but area map is 20 - 1732 
     }else if (horizStart >= picWidth){ // adjust position to account for right border and frame border pixels
       return (picWidth - 105);
-    }else if (horizStart > (picWidth - 105)){ // adjust for clicks along right edge and frame border pixels
-        return (picWidth - 105);
     }else{ //middle of board clicks
       return (horizStart - 55);
     }
@@ -40,15 +38,18 @@ function adjustHorizontalDisplay(horizStart){  // need to adjust for click along
         return (vertStart - 55);
     }
 }
-
     let tagBoxStyle = {
         display: tagBoxDisplay,
         left: adjustHorizontalDisplay(horizStart), 
         position: "absolute", 
         top: adjustVerticalDisplay(vertStart),
     }
-    //let tagBoxVertical = 0;
-    //let tagBoxHorizontal = 0; 
+
+
+    function tag (charName){
+         props.tag(charName, horizStart ,vertStart);
+    }
+
 
     /*
     const showTagBox = () => {
@@ -64,9 +65,9 @@ return(
     <div id="tag-box" style={tagBoxStyle}>
         <div className="tag-frame" />
             <div className="tag-options">
-                    <li>Samus</li>
-                    <li>Vault boy</li>
-                    <li>Boba Fett</li>
+                    <li onClick={() => tag("Samus")}>Samus</li>
+                    <li onClick={() => tag("Vault Boy")}>Vault boy</li>
+                    <li onClick={() => tag("Boba Fett")}>Boba Fett</li>
             </div>
     </div>
     );

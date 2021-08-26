@@ -17,14 +17,34 @@ const GameLegend = () => {
         }
     });
 
+
+    useEffect(() => {
+        const showHintsButton = document.getElementById("showHints");
+        showHintsButton.addEventListener("click", showHints);
+        return function cleanup(){
+            showHintsButton.removeEventListener("click", showHints);
+        }
+    });
+
+    useEffect(() => {
+        const hideHintsButton = document.getElementById("hideHints");
+        hideHintsButton.addEventListener("click", hideHints);
+        return function cleanup(){
+            hideHintsButton.removeEventListener("click", hideHints);
+        }
+    });
+
         // need to change cursor when hovering above clipboard for gamelegend
     function showHints () {
-        // let hints = document.getElementsById("hint-pic"); < ... change to a hook ??
-        // hints.style.display = "inline-block";
+       document.getElementById("hints").style.display = "flex";
+      }
+
+      function hideHints () {
+        document.getElementById("hints").style.display = "none";
       }
 
     const showOrHideLegend = () => {
-        if (legendDisplay == true){
+        if (legendDisplay === true){
             document.getElementById("legendWrapper").className = "legend-hidden";
             document.getElementById("legendList").style.display = "none";
             setLegendDisplay(false);
@@ -43,20 +63,28 @@ return (
         <p style={ {textAlign: "center"} }> Who you need to hunt!</p>
         <li>
         Samus   <br /> 
-    <div id="hint1"><img id="hint-pic" className="hint-pic" src={SamusHint} /> </div>
         </li>
         <li>
         Vault Boy <br />
-        <div id="hint2"><img id="hint-pic" className="hint-pic" src={VaultBoyHint} /> </div>
         </li>
         <li>
         Boba Fett<br />
-        <div id="hint3"><img id="hint-pic" className="hint-pic" src={BobaHint} /> </div>
         </li><br />
         <li>
-        <a href="#" onClick={() => showHints()}>SHOW HINTS</a> <a href="#" >HIDE HINTS</a>
+        <a id="showHints" href="#">SHOW HINTS</a> <a id="hideHints" href="#" >HIDE HINTS</a>
         </li>
     </div>
+    </div>
+
+
+
+    <div id="hints" className="hints-box">
+        Samus Hint
+        <img id="hint-pic1" className="hint-pic" src={SamusHint} />
+        Vault Boy Hint
+        <img id="hint-pic2" className="hint-pic" src={VaultBoyHint} /> 
+        Boba Fett Hint
+        <img id="hint-pic3" className="hint-pic" src={BobaHint} /> 
     </div>
     
 
