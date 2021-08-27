@@ -13,11 +13,11 @@ const GameBoard = (props) => {
     const [yScrolled, setYScrolled] = useState(0);
     const [xScrolled, setXScrolled] = useState(0);
 
-    const [selectionMade, setSelectionMade] = useState(true);
-
     const [foundBobaFett, setFoundBobaFet] = useState(false);
     const [foundVaultBoy, setFoundVaultBoy] = useState(false);
     const [foundSamus, setFoundSamus] = useState(false);
+
+    const [tagBoxDisplay, setTagBoxDisplay] = useState(false);
 
       // will need to adjust when we change border sizes + add border diff here
     const characterArray = [
@@ -26,6 +26,7 @@ const GameBoard = (props) => {
       {name: "Samus", xStart: 1160, xEnd: 1219, yStart: 1303, yEnd: 1385},
     ]; 
 
+    //let tagBoxDisplay = false;
 
     const handleScroll = () => { 
         const yOffset = window.scrollY;
@@ -38,6 +39,7 @@ const GameBoard = (props) => {
         }
     }
 
+
       useEffect(() => {
         window.addEventListener("scroll", handleScroll); 
         return function cleanup () {
@@ -47,51 +49,51 @@ const GameBoard = (props) => {
 
       useEffect(() => {
       const handleClick = (e) => {
+        showTagBox();
         let xPos = e.clientX -50; // -50 to account for image border on left (only applicable before x scroll) 
         let yPos = e.clientY -50; // -50 to account for image border on top (only applicable before y scroll 
         xPos = ((xPos + xScrolled)); // center box on selection
         yPos = ((yPos + yScrolled));
         console.log("Y START IS: " + yPos);
         console.log("X START IS: " + xPos);
-        return setXPosition(xPos), setYPosition(yPos), setSelectionMade(true);
+        return setXPosition(xPos), setYPosition(yPos);
       };
-         document.addEventListener("click", handleClick);
+        // document.addEventListener("click", handleClick); old
+        document.getElementById('image-area').addEventListener("click", handleClick);
         return function cleanup () {
-        document.removeEventListener("click", handleClick);
+        document.getElementById('image-area').removeEventListener("click", handleClick);
     }
   });
 
 
   useEffect(() => {
 
-  // should only be run on MOUNT! ... 
-  function markCharacter (characterName) {
-    let characterList = characterArray;
-    for (let character = 0; character <= characterList.length; character ++){
-
-      if(characterList[character].name === characterName){
-        let characterInfo = characterList[character];
-        //code when have idea of what image to use 
-        return;
-      }
+    function gameEnd(){
+        alert("congrats you found everyone!");
+        // reset game or return to start page box prompt?
     }
-
-  }
 
 
 
     if(foundSamus){
-      //markCharacter("Samus");
+      const tagHim = () => { document.getElementById("s").style = "block"; }
+      tagHim();
     }
 
     if(foundBobaFett){
-      //markCharacter("Boba Fett");
+      const tagHim = () => { document.getElementById("bf").style = "block"; }
+      tagHim();
     }
 
     if(foundVaultBoy){
-      //markCharacter("Vault Boy");
+      const tagHim = () => { document.getElementById("vb").style = "block"; }
+      tagHim();
     }
 
+
+    if(foundVaultBoy && foundBobaFett && foundSamus){
+      gameEnd();
+    }
 
   }, [foundSamus, foundVaultBoy, foundBobaFett ]);
 
@@ -107,12 +109,13 @@ const GameBoard = (props) => {
     }
   }
 
-  // change this to use image map?? 
+  // hide task box on check for character click 
     function checkForCharacter(characterName, tagBoxCenterX, tagBoxCenterY) {
       let character = getCharacterLocation(characterName);
 
       if ((checkXAxis()) && (checkYAxis())){
         alert('yeep found ' + character.name);
+        hideTagBox(); // may need to change this location
           if (character.name === "Samus"){
             setFoundSamus(true);
           }else if(character.name === "Boba Fett"){
@@ -142,22 +145,52 @@ const GameBoard = (props) => {
 
     }
 
+    const showTagBox = () => {
+      setTagBoxDisplay(true);
+      console.log("Ran show tag box: " + tagBoxDisplay);
+    }
+
+    const hideTagBox = () => {
+      setTagBoxDisplay(false);
+      console.log("Rand hide tag box: " + tagBoxDisplay);
+    }
+
+    /*<map id="game-map" name="sfmap">
+      <area id="tagging-area" shape="rect" coords="50,50,1762,158" alt="tagging area"/>
+      </map>*/
+
 return (
     <div id="game-container" className="game-container">
-        <GameLegend />
-         <img id="game-image" className="game-image" alt="science fiction character collage" src={SF} useMap="#sfmap" /> 
-          <div id="BobaFett" className="spotter-mark"/>
-          <div id="VaultBoy" className="spotter-mark"/>
-          <div id="Samus" className="spotter-mark"/>
+        <GameLegend 
+              bobaFettStatus={foundBobaFett}
+              vaultBoyStatus={foundVaultBoy}
+              samusStatus= {foundSamus}
+        />
+        <div id="image-area">
+          <img id="game-image" className="game-image" alt="science fiction character collage" src={SF} /> 
+          
+          <div id="bf" style={ {display: "none"} }>
+            <div id="bfm" className="found-boba-mark"/>
+            <div id="bf-circle" className="bf-circle "/>
+          </div>
 
-<map name="sfmap">
-<area shape="rect" coords="1160, 1303, 1219, 1385" alt="samus"/>
-  <area shape="rect" coords="165, 559, 201, 609" alt="vaultBoy"/>
-  <area shape="rect" coords="477, 999, 519, 1051" alt="bobaFett" />
-  <area shape="rect" coords="50,50,1762,158" alt="tagging area"/>
-</map>
+          <div id="vb" style={ {display: "none"} }>
+            <div id="vbm" className="found-vaultboy-mark"/>
+            <div id="vb-circle" className="vb-circle "/>
+          </div>
 
-<TagBox verticalPosition={yPosition} horizontalPosition={xPosition} selectionMade={selectionMade} tag={checkForCharacter}/>
+          <div id="s" style={ {display: "none"} }>
+            <div id="sm" className="found-samus-mark"/>
+            <div id="s-circle" className="samus-circle "/>
+          </div>
+
+        </div>
+      <TagBox 
+      verticalPosition={yPosition} 
+      horizontalPosition={xPosition} 
+      tagBoxDisplay={tagBoxDisplay} 
+      tag={checkForCharacter}
+      />
     </div>
 
 );

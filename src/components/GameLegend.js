@@ -5,9 +5,13 @@ import BobaHint from "./images/boba.png";
 import Assignment from "./images/assignment.svg";
 import { useState, useEffect } from "react";
 
-const GameLegend = () => {
+const GameLegend = (props) => {
 
     const [legendDisplay, setLegendDisplay] = useState(false);
+
+    let bobaFettFound = props.bobaFettStatus;
+    let vaultBoyFound =  props.vaultBoyStatus;
+    let samusFound = props.samusStatus;
 
     useEffect(() => {
         const clipBoard = document.getElementById("legend-icon");
@@ -16,6 +20,26 @@ const GameLegend = () => {
             clipBoard.removeEventListener("click", showOrHideLegend);
         }
     });
+
+
+    useEffect(() => {
+        if(bobaFettFound){
+            document.getElementById("legend-boba").style.color = "red";
+            document.getElementById("legend-boba").style.textDecoration = "line-through";
+
+        }
+        if(vaultBoyFound){
+            document.getElementById("legend-vault-boy").style.color = "red";
+            document.getElementById("legend-vault-boy").style.textDecoration = "line-through";
+
+        }
+        if(samusFound){
+            document.getElementById("legend-samus").style.color = "red";
+            document.getElementById("legend-samus").style.textDecoration = "line-through";
+
+        }
+    
+    }, [bobaFettFound, vaultBoyFound, samusFound]);
 
 
     useEffect(() => {
@@ -53,7 +77,7 @@ const GameLegend = () => {
             document.getElementById("legendList").style.display = "flex";
             setLegendDisplay(true);
         }
-    }
+    } //         <a id="showHints" href="#">SHOW HINTS</a> <a id="hideHints" href="#" >HIDE HINTS</a>
 
 return ( 
 <div id="legend" >
@@ -61,18 +85,11 @@ return (
     <div id="legendWrapper" className="legend-hidden">
     <div id="legendList" className="legendList" >
         <p style={ {textAlign: "center"} }> Who you need to hunt!</p>
-        <li>
-        Samus   <br /> 
-        </li>
-        <li>
-        Vault Boy <br />
-        </li>
-        <li>
-        Boba Fett<br />
-        </li><br />
-        <li>
-        <a id="showHints" href="#">SHOW HINTS</a> <a id="hideHints" href="#" >HIDE HINTS</a>
-        </li>
+        <li id="legend-samus">Samus</li>
+        <li id="legend-vault-boy">Vault Boy</li>
+        <li id="legend-boba">Boba Fett</li><br/>
+        <li><span id="showHints">SHOW HINTS </span> </li>
+        <li><span id="hideHints">HIDE HINTS</span></li>
     </div>
     </div>
 
@@ -80,11 +97,11 @@ return (
 
     <div id="hints" className="hints-box">
         Samus Hint
-        <img id="hint-pic1" className="hint-pic" src={SamusHint} />
+        <img id="hint-pic1" alt="samus pose from game" className="hint-pic" src={SamusHint} />
         Vault Boy Hint
-        <img id="hint-pic2" className="hint-pic" src={VaultBoyHint} /> 
+        <img id="hint-pic2" alt="vault boy pose from game" className="hint-pic" src={VaultBoyHint} /> 
         Boba Fett Hint
-        <img id="hint-pic3" className="hint-pic" src={BobaHint} /> 
+        <img id="hint-pic3" alt="boba fett pose from game" className="hint-pic" src={BobaHint} /> 
     </div>
     
 

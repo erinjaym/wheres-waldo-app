@@ -1,23 +1,22 @@
 import React from "react";
-import { useState, useEffect } from "react";
 
 const TagBox = (props) => {
 
-    const [showTagBox, setShowTagBox] = useState (props.selectionMade);
-    const [tagBoxDisplay, setTagBoxDisplay] = useState ("none");
+    let tagBoxDisplay = props.tagBoxDisplay;
     let vertStart = props.verticalPosition;
     let horizStart = props.horizontalPosition;
 
     let picHeight = 1528; 
     let picWidth = 1712; 
 
-useEffect(() => {
-    // may need to move outside of use effect ? 
-  if (showTagBox) {
-    setTagBoxDisplay("block");
+function setTagBoxDisplay(tagBoxDisplay) {
+  if(tagBoxDisplay){
+    return "block";
+  }else{
+    return "none";
   }
+}
 
-},[ showTagBox ]);
 
 function adjustHorizontalDisplay(horizStart){  // need to adjust for click along border as well 
     if ( horizStart < 80){ //adjust position to account for left border
@@ -39,7 +38,7 @@ function adjustHorizontalDisplay(horizStart){  // need to adjust for click along
     }
 }
     let tagBoxStyle = {
-        display: tagBoxDisplay,
+        display: setTagBoxDisplay(tagBoxDisplay),
         left: adjustHorizontalDisplay(horizStart), 
         position: "absolute", 
         top: adjustVerticalDisplay(vertStart),
@@ -49,16 +48,6 @@ function adjustHorizontalDisplay(horizStart){  // need to adjust for click along
     function tag (charName){
          props.tag(charName, horizStart ,vertStart);
     }
-
-
-    /*
-    const showTagBox = () => {
-        tagBoxStyle.display = "block";
-    }
-
-    const hideTagBox = () => {
-        tagBoxStyle.display = "none";
-    }*/
 
 
 return(

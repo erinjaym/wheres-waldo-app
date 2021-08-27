@@ -106,13 +106,14 @@ z-index: 2;
   text-decoration: none;
   }
 
-.legendList a{
-color: white;
-}
+  .legendList span{
+    text-decoration: underline;
+    }
 
-.legendList a:hover{
-  color: rgb(5, 235, 5);
-  }
+  .legendList span:hover{
+    text-decoration: underline;
+    color: rgb(5, 235, 5);
+    }
 
 .legend-icon {
 align-content: center;
@@ -197,15 +198,81 @@ z-index: 3;
   }
 
 
-  .spotter-mark {
+  .found-samus-mark {
     border-bottom: 7px solid rgb(0, 255, 42);
     border-right: 7px solid rgb(0, 255, 42);
     display: inline-block;
-    top: 1303px;
-    left: 1219px;
+    top: 1320px;
+    left: 1195px;
     position: absolute;
     height: 24px;
     transform: rotate(45deg);
     width: 12px;
+    z-index: 2;
+  }
+
+
+  .samus-circle {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 5px solid rgb(0, 255, 42);
+    top: 1320px;
+    left: 1175px;
+    z-index: 2;
+    }
+
+
+  .found-boba-mark {
+    border-bottom: 7px solid rgb(0, 255, 42);
+    border-right: 7px solid rgb(0, 255, 42);
+    display: inline-block;
+    top: 992px;
+    left: 498px;
+    position: absolute;
+    height: 24px;
+    transform: rotate(45deg);
+    width: 12px;
+    z-index: 2;
+  }
+
+  .bf-circle {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 5px solid rgb(0, 255, 42);
+    top: 992px;
+    left: 478px;
+    z-index: 2;
+  }
+
+
+
+  .found-vaultboy-mark {
+    border-bottom: 7px solid rgb(0, 255, 42);
+    border-right: 7px solid rgb(0, 255, 42);
+    display: inline-block;
+    top: 556px;
+    left: 181px;
+    position: absolute;
+    height: 24px;
+    transform: rotate(45deg);
+    width: 12px;
+    z-index: 2;
+  }
+
+  .vb-circle {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 5px solid rgb(0, 255, 42);
+    top: 556px;
+    left: 161px;
     z-index: 2;
   }
