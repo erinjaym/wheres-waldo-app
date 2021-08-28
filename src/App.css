@@ -84,6 +84,7 @@ text-align: center;
 .legend-shown {
 background-color: rgba(38, 95, 60, 0.788);
 border-top: 8px solid rgb(28, 102, 6);
+cursor: pointer;
 display: flex;
 font-family: ArcadeRegular;
 font-size: 2em;
@@ -121,6 +122,7 @@ z-index: 2;
 .legend-icon {
 align-content: center;
 background-color: rgba(169, 169, 169, 0.459);
+cursor: pointer;
 width: 50px;
 height: 50px;
 position: fixed;
@@ -167,21 +169,25 @@ border-radius: 50%;
 
   .tag-options{
   color: white;
-  background: grey;
-  font-size: 1.3em;
+  background: rgba(38, 95, 60, 0.788);
+  padding-top: 2px;
+  font-size: 1.5em;
+  font-family: "ArcadeRegular", "Times New Roman", Times, serif;
   text-align: center;
   width: 110px;
+
   }
 
   .tag-options li{
-    border: 1px black solid;
+    border: 1px solid white;
+    padding-top: 4px;
     list-style-type: none;
   }
 
   .tag-options li:hover{
     background: white;
-    border: 1px black solid;
-    color: black;
+    border: 1px solid darkred;
+    color: darkred;
     list-style-type: none;
   }
 
@@ -211,7 +217,6 @@ z-index: 3;
     height: 24px;
     transform: rotate(45deg);
     width: 12px;
-    z-index: 2;
   }
 
 
@@ -224,7 +229,6 @@ z-index: 3;
     border: 5px solid rgb(0, 255, 42);
     top: 1320px;
     left: 1175px;
-    z-index: 2;
     }
 
 
@@ -238,7 +242,6 @@ z-index: 3;
     height: 24px;
     transform: rotate(45deg);
     width: 12px;
-    z-index: 2;
   }
 
   .bf-circle {
@@ -250,7 +253,6 @@ z-index: 3;
     border: 5px solid rgb(0, 255, 42);
     top: 992px;
     left: 478px;
-    z-index: 2;
   }
 
 
@@ -265,7 +267,6 @@ z-index: 3;
     height: 24px;
     transform: rotate(45deg);
     width: 12px;
-    z-index: 2;
   }
 
   .vb-circle {
@@ -277,7 +278,6 @@ z-index: 3;
     border: 5px solid rgb(0, 255, 42);
     top: 556px;
     left: 161px;
-    z-index: 2;
   }
 
 

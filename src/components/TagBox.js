@@ -5,7 +5,6 @@ const TagBox = (props) => {
     let tagBoxDisplay = props.tagBoxDisplay;
     let vertStart = props.verticalPosition;
     let horizStart = props.horizontalPosition;
-
     let picHeight = 1528; 
     let picWidth = 1712; 
 
@@ -17,10 +16,9 @@ function setTagBoxDisplay(tagBoxDisplay) {
   }
 }
 
-
-function adjustHorizontalDisplay(horizStart){  // need to adjust for click along border as well 
+function adjustHorizontalDisplay(horizStart){ 
     if ( horizStart < 80){ //adjust position to account for left border
-      return 0; // pic is 0 - 1712 but area map is 20 - 1732 
+      return 0; 
     }else if (horizStart >= picWidth){ // adjust position to account for right border and frame border pixels
       return (picWidth - 105);
     }else{ //middle of board clicks
@@ -37,6 +35,7 @@ function adjustHorizontalDisplay(horizStart){  // need to adjust for click along
         return (vertStart - 55);
     }
 }
+
     let tagBoxStyle = {
         display: setTagBoxDisplay(tagBoxDisplay),
         left: adjustHorizontalDisplay(horizStart), 
@@ -44,11 +43,9 @@ function adjustHorizontalDisplay(horizStart){  // need to adjust for click along
         top: adjustVerticalDisplay(vertStart),
     }
 
-
     function tag (charName){
          props.tag(charName, horizStart ,vertStart);
     }
-
 
 return(
     <div id="tag-box" style={tagBoxStyle}>
