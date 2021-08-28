@@ -14,9 +14,8 @@ const StartScreen = () => {
 return (
     <div id="start-screen" className="start-screen">
         <div id="instructions" className="instructions">
-            <p>You are a bounty hunter!<br/> 
-            Your goal is to track down dangerous individuals
-            and tag them so our teams can take them out! </p>
+            <p>Track down these dangerous individuals
+            so our teams can take them out! </p>
         </div>
 
         <div id="vault-boy" className="wanted-items">
@@ -24,13 +23,9 @@ return (
             <img alt="samus from metroid" className="mugshot" src={Samus} />
             <img alt="boba fett" className="mugshot" src={Boba} />
         </div>
-
-        <div className="instructions">
-            <p style={disclaimer}><i>Note: Characters are not in the same pose as wanted posters</i></p>
-            <Link to="/GameBoard" >
+        <Link to="/GameBoard" >
             <button id="game-start" className="start-button">START GAME</button>
-            </Link>
-        </div>
+        </Link>
     </div>
 );
 }

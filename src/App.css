@@ -5,28 +5,28 @@
   }
   
 body {
-background-color: rgb(1, 1, 63);
+background-color: rgb(28, 102, 6);
 color: white;
 }
 
 .start-screen{
 align-items: center;
-background-color: rgba(169, 169, 169, 0.459);
+background-color: rgba(38, 95, 60, 0.788);
 border: 1px dotted white;
 border-top: solid 8px white;
 color: white;
 display: flex;
 flex-direction: column;
 font-family: "ArcadeRegular", "Times New Roman", Times, serif;
-font-size: 1.5em;
-height: 100;
-justify-content: space-between;
+font-size: 2em;
+height: 600px;
+justify-content: space-around;
 left: 50%;
 padding: 10px;
-position: absolute;
-top: 50%;
-transform: translate(-50%, -50%);
-width: auto;
+position: fixed;
+top: 30%;
+transform: translate(-50%, -30%);
+width: 600px;
 }
 
 .wanted-items{
@@ -44,17 +44,20 @@ width: auto;
 }
 
 .start-button{
-background-color: rgb(1, 1, 63);
+background-color: rgba(169, 169, 169, 0.137);
+border: 2px dotted rgb(239, 241, 238);
+padding-top: 10px;
+font-family: "ArcadeRegular", "Times New Roman", Times, serif;
 color: white;
-font-size: 1em;
+font-size: 1.2em;
 text-align: center;
 }
 
 .start-button:hover{
     background-color: white;
-    border: 2px solid rgb(1, 1, 63);
-    color: darkmagenta;
-    font-size: 1em;
+    border: 2px dotted rgb(17, 71, 1);
+    color: rgb(13, 49, 2);
+    font-size: 1.2em;
     text-align: center;
 }
     
@@ -276,3 +279,42 @@ z-index: 3;
     left: 161px;
     z-index: 2;
   }
+
+
+.alert-popup{
+  align-items: center;
+  background-color: rgba(38, 95, 60, 0.788);
+  border: 1px dotted white;
+  border-top: solid 8px white;
+  color: white;
+  display: none;
+  font-size: 2em;
+  font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+  flex-direction: column;
+  height: 400px;
+  justify-content: space-around;
+  width: 600px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  }
+
+  .alert-button{
+    background-color: rgba(169, 169, 169, 0.137);
+    border: 2px dotted rgb(239, 241, 238);
+    padding-top: 10px;
+    font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    }
+    
+    .alert-button:hover{
+        background-color: white;
+        border: 2px dotted rgb(17, 71, 1);
+        color: rgb(13, 49, 2);
+        font-size: 1.2em;
+        text-align: center;
+    }
