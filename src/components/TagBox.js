@@ -19,8 +19,8 @@ function setTagBoxDisplay(tagBoxDisplay) {
 function adjustHorizontalDisplay(horizStart){ 
     if ( horizStart < 80){ //adjust position to account for left border
       return 0; 
-    }else if (horizStart >= picWidth){ // adjust position to account for right border and frame border pixels
-      return (picWidth - 105);
+    }else if (horizStart > (picWidth - 110)){ // adjust position to account for right border and frame border pixels
+      return (picWidth - 110);
     }else{ //middle of board clicks
       return (horizStart - 55);
     }
