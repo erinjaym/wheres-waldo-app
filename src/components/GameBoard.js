@@ -6,7 +6,7 @@ import GameLegend from "./GameLegend";
 import TagBox from "./TagBox";
 import AlertWindow from "./AlertWindow";
 
-const GameBoard = (props) => {
+const GameBoard = () => {
 
     const [xPosition, setXPosition ] = useState(0);
     const [yPosition, setYPosition ] = useState(0); 
@@ -22,6 +22,8 @@ const GameBoard = (props) => {
 
     const [alertWindowDisplay, setAlertWindowDisplay] = useState (false);
     const [alertWindowText, setAlertWindowText] = useState("Alert Dialog");
+
+    const [gameFinished, setGameFinished ] = useState(false);
 
       // will need to adjust when we change border sizes + add border diff here
     const characterArray = [
@@ -62,11 +64,15 @@ const GameBoard = (props) => {
         console.log("X START IS: " + xPos);
         return setXPosition(xPos), setYPosition(yPos);
       };
-        // document.addEventListener("click", handleClick); old
+
+        if (!gameFinished){
         document.getElementById('image-area').addEventListener("click", handleClick);
         return function cleanup () {
         document.getElementById('image-area').removeEventListener("click", handleClick);
-    }
+        }
+      }else{
+        console.log('Games over! Dont need to do anything!');
+      }
   });
 
 
@@ -100,6 +106,7 @@ const GameBoard = (props) => {
   useEffect(() => {
     function gameEnd(){
       setAlertWindowText("Good Job! You found everyone! ");
+      setGameFinished(true);
       setAlertWindowDisplay(true);
         // reset game or return to start page box prompt?
     }
@@ -109,7 +116,6 @@ const GameBoard = (props) => {
    }
 
   }, [foundVaultBoy, foundBobaFett, foundSamus] );
-
 
 
   function getCharacterLocation(characterName) {
@@ -174,10 +180,6 @@ const GameBoard = (props) => {
       setAlertWindowDisplay(false);
     }
 
-    /*<map id="game-map" name="sfmap">
-      <area id="tagging-area" shape="rect" coords="50,50,1762,158" alt="tagging area"/>
-      </map>*/
-
 return (
     <div id="game-container" className="game-container">
         <GameLegend 
@@ -214,6 +216,7 @@ return (
       alertWindowText={alertWindowText}
       alertWindowDisplay={alertWindowDisplay} 
       dismiss ={hideAlert}
+      gameFinished={gameFinished}
       /> 
     </div>
 

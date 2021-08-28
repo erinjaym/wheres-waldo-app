@@ -1,16 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AlertWindow = (props) => {
     let windowText = props.alertWindowText;
     let windowDisplay = props.alertWindowDisplay;
+    let gameOver = props.gameFinished;
+    let button = <button  className="alert-button" onClick={() => props.dismiss() }>Sweet</button>;
 
-    //this runs on every render
     function setWindowDisplay () {
         if (windowDisplay){
             return "flex";
         }else{
             return "none";
         }
+    }
+
+    if (gameOver){
+        button = <Link to="/HighScores"> <button className="alert-button">See High Scores</button></Link>;
     }
 
     let windowStyle = {
@@ -37,7 +43,7 @@ const AlertWindow = (props) => {
 return (
           <div id="alert-window" style={windowStyle}>
                 {windowText}<br /><br /> 
-                <button onClick={() => props.dismiss()} className="alert-button">Sweet!</button>
+                { button }
           </div>
 );
 }

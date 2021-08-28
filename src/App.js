@@ -2,6 +2,7 @@ import './App.css';
 import './components/fonts/arcade-regular.ttf';
 import StartScreen from "./components/StartScreen";
 import GameBoard from './components/GameBoard';
+import HighScores from './components/HighScores';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -18,7 +19,12 @@ function App() {
       <Route
             exact
             path="/GameBoard"
-            render={(props) => <GameBoard {...props} />}
+            component={GameBoard}
+          />
+      <Route
+            exact
+            path="/HighScores"
+            component={HighScores}
           />
       </Switch>
     </div>
