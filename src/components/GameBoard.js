@@ -4,6 +4,7 @@ import SF from './images/sfpic.png';
 import { useState, useEffect } from "react";
 import GameLegend from "./GameLegend";
 import TagBox from "./TagBox";
+import AlertWindow from "./AlertWindow";
 
 const GameBoard = (props) => {
 
@@ -18,6 +19,9 @@ const GameBoard = (props) => {
     const [foundSamus, setFoundSamus] = useState(false);
 
     const [tagBoxDisplay, setTagBoxDisplay] = useState(false);
+
+    const [alertWindowDisplay, setAlertWindowDisplay] = useState (false);
+    const [alertWindowText, setAlertWindowText] = useState("Alert Dialog");
 
       // will need to adjust when we change border sizes + add border diff here
     const characterArray = [
@@ -67,35 +71,44 @@ const GameBoard = (props) => {
 
 
   useEffect(() => {
-
-    function gameEnd(){
-        alert("congrats you found everyone!");
-        // reset game or return to start page box prompt?
-    }
-
-
-
-    if(foundSamus){
-      const tagHim = () => { document.getElementById("s").style = "block"; }
-      tagHim();
-    }
-
-    if(foundBobaFett){
-      const tagHim = () => { document.getElementById("bf").style = "block"; }
-      tagHim();
-    }
-
     if(foundVaultBoy){
       const tagHim = () => { document.getElementById("vb").style = "block"; }
       tagHim();
+      setAlertWindowText("Good Job! You found Vault Boy! ");
+      setAlertWindowDisplay(true);
+    }
+  }, [ foundVaultBoy ]);
+
+  useEffect(() => {
+    if(foundBobaFett){
+      const tagHim = () => { document.getElementById("bf").style = "block"; }
+      tagHim();
+      setAlertWindowText("Good Job! You found Boba Fett! ");
+      setAlertWindowDisplay(true);
+    }
+  }, [ foundBobaFett ] );
+
+  useEffect(() => {
+    if(foundSamus){
+      const tagHim = () => { document.getElementById("s").style = "block"; }
+      tagHim();
+      setAlertWindowText("Good Job! You found Samus! ");
+      setAlertWindowDisplay(true);
+    }
+  }, [foundSamus] );
+
+  useEffect(() => {
+    function gameEnd(){
+      setAlertWindowText("Good Job! You found everyone! ");
+      setAlertWindowDisplay(true);
+        // reset game or return to start page box prompt?
     }
 
+   if(foundVaultBoy && foundBobaFett && foundSamus){
+     gameEnd();
+   }
 
-    if(foundVaultBoy && foundBobaFett && foundSamus){
-      gameEnd();
-    }
-
-  }, [foundSamus, foundVaultBoy, foundBobaFett ]);
+  }, [foundVaultBoy, foundBobaFett, foundSamus] );
 
 
 
@@ -114,7 +127,6 @@ const GameBoard = (props) => {
       let character = getCharacterLocation(characterName);
 
       if ((checkXAxis()) && (checkYAxis())){
-        alert('yeep found ' + character.name);
         hideTagBox(); // may need to change this location
           if (character.name === "Samus"){
             setFoundSamus(true);
@@ -124,7 +136,8 @@ const GameBoard = (props) => {
             setFoundVaultBoy(true);
           }
       }else{
-        alert('Naw son!');
+        setAlertWindowText("Nope! Try Again!");
+        setAlertWindowDisplay(true);
       }
 
       function checkXAxis (){
@@ -152,7 +165,13 @@ const GameBoard = (props) => {
 
     const hideTagBox = () => {
       setTagBoxDisplay(false);
-      console.log("Rand hide tag box: " + tagBoxDisplay);
+      console.log("Ran hide tag box: " + tagBoxDisplay);
+    }
+
+    // this can be ran with an external compenent outside of use effect. // which is fine because it only renders from that outside componenet
+    const hideAlert = () => {
+      console.log('ran hide alert');
+      setAlertWindowDisplay(false);
     }
 
     /*<map id="game-map" name="sfmap">
@@ -191,6 +210,11 @@ return (
       tagBoxDisplay={tagBoxDisplay} 
       tag={checkForCharacter}
       />
+      <AlertWindow 
+      alertWindowText={alertWindowText}
+      alertWindowDisplay={alertWindowDisplay} 
+      dismiss ={hideAlert}
+      /> 
     </div>
 
 );
