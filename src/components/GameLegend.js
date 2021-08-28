@@ -77,7 +77,7 @@ const GameLegend = (props) => {
             document.getElementById("legendList").style.display = "flex";
             setLegendDisplay(true);
         }
-    } //         <a id="showHints" href="#">SHOW HINTS</a> <a id="hideHints" href="#" >HIDE HINTS</a>
+    }
 
 return ( 
 <div id="legend" >
@@ -93,9 +93,7 @@ return (
     </div>
     </div>
 
-
-
-    <div id="hints" className="hints-box">
+    <div id="hints" className="alert-popup">
         Samus Hint
         <img id="hint-pic1" alt="samus pose from game" className="hint-pic" src={SamusHint} />
         Vault Boy Hint
