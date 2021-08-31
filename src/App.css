@@ -322,3 +322,24 @@ z-index: 3;
         font-size: 1.2em;
         text-align: center;
     }
+
+
+    .high-scores-page{
+align-items: center;
+background-color: rgba(38, 95, 60, 0.788);
+border: 1px dotted white;
+border-top: solid 8px white;
+color: white;
+display: flex;
+flex-direction: column;
+font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+font-size: 2em;
+height: 600px;
+justify-content: space-around;
+left: 50%;
+padding: 10px;
+position: fixed;
+top: 30%;
+transform: translate(-50%, -30%);
+width: 600px;
+    }
