@@ -25,35 +25,32 @@ const GameBoard = () => {
 
     const [gameFinished, setGameFinished ] = useState(false);
 
-      // will need to adjust when we change border sizes + add border diff here
     const characterArray = [
       {name: "Boba Fett", xStart: 477, xEnd: 519, yStart: 999, yEnd: 1051},
       {name: "Vault Boy", xStart: 165, xEnd: 201, yStart: 559, yEnd: 609},
       {name: "Samus", xStart: 1160, xEnd: 1219, yStart: 1303, yEnd: 1385},
     ]; 
 
-    //let tagBoxDisplay = false;
-
-    const handleScroll = () => { 
-        const yOffset = window.scrollY;
-        const xOffset = window.scrollX;
-        if( yOffset >=0 ){
-            setYScrolled(yOffset);
-        }
-        if( xOffset >= 0){
-            setXScrolled( xOffset );
-        }
-    }
-
-
       useEffect(() => {
+        const handleScroll = () => { 
+          const yOffset = window.scrollY;
+          const xOffset = window.scrollX;
+          if( yOffset >=0 ){
+              setYScrolled(yOffset);
+          }
+          if( xOffset >= 0){
+              setXScrolled( xOffset );
+          }
+      }
+
         window.addEventListener("scroll", handleScroll); 
         return function cleanup () {
             window.removeEventListener("scroll", handleScroll);
             }
-      });
+      }, []);
 
       useEffect(() => {
+
       const handleClick = (e) => {
         showTagBox();
         let xPos = e.clientX -50; // -50 to account for image border on left (only applicable before x scroll) 
@@ -62,19 +59,20 @@ const GameBoard = () => {
         yPos = ((yPos + yScrolled));
         console.log("Y START IS: " + yPos);
         console.log("X START IS: " + xPos);
-        return setXPosition(xPos), setYPosition(yPos);
+        setXPosition(xPos);
+        setYPosition(yPos);
+        return;
       };
 
         if (!gameFinished){
-        document.getElementById('image-area').addEventListener("click", handleClick);
+          document.getElementById('image-area').addEventListener("click", handleClick);
         return function cleanup () {
-        document.getElementById('image-area').removeEventListener("click", handleClick);
+          document.getElementById('image-area').removeEventListener("click", handleClick);
         }
       }else{
         console.log('Games over! Dont need to do anything!');
       }
   });
-
 
   useEffect(() => {
     if(foundVaultBoy){
@@ -108,7 +106,6 @@ const GameBoard = () => {
       setAlertWindowText("Good Job! You found everyone! ");
       setGameFinished(true);
       setAlertWindowDisplay(true);
-        // reset game or return to start page box prompt?
     }
 
    if(foundVaultBoy && foundBobaFett && foundSamus){
@@ -127,8 +124,7 @@ const GameBoard = () => {
       }
     }
   }
-
-  // hide task box on check for character click 
+  
     function checkForCharacter(characterName, tagBoxCenterX, tagBoxCenterY) {
       let character = getCharacterLocation(characterName);
 
@@ -166,27 +162,24 @@ const GameBoard = () => {
 
     const showTagBox = () => {
       setTagBoxDisplay(true);
-      console.log("Ran show tag box: " + tagBoxDisplay);
     }
 
     const hideTagBox = () => {
       setTagBoxDisplay(false);
-      console.log("Ran hide tag box: " + tagBoxDisplay);
     }
 
-    // this can be ran with an external compenent outside of use effect. // which is fine because it only renders from that outside componenet
     const hideAlert = () => {
-      console.log('ran hide alert');
       setAlertWindowDisplay(false);
     }
 
 return (
     <div id="game-container" className="game-container">
         <GameLegend 
-              bobaFettStatus={foundBobaFett}
-              vaultBoyStatus={foundVaultBoy}
-              samusStatus= {foundSamus}
+        bobaFettStatus={foundBobaFett}
+        vaultBoyStatus={foundVaultBoy}
+        samusStatus= {foundSamus}
         />
+        
         <div id="image-area">
           <img id="game-image" className="game-image" alt="science fiction character collage" src={SF} /> 
           
@@ -206,6 +199,7 @@ return (
           </div>
 
         </div>
+        
       <TagBox 
       verticalPosition={yPosition} 
       horizontalPosition={xPosition} 

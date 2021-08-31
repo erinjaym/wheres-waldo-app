@@ -14,70 +14,71 @@ const GameLegend = (props) => {
     let samusFound = props.samusStatus;
 
     useEffect(() => {
+
+        const showOrHideLegend = () => {
+
+            if (legendDisplay === true){
+                document.getElementById("legendWrapper").className = "legend-hidden";
+                document.getElementById("legendList").style.display = "none";
+                setLegendDisplay(false);
+            }else{
+                document.getElementById("legendWrapper").className = "legend-shown";
+                document.getElementById("legendList").style.display = "flex";
+                setLegendDisplay(true);
+            }
+        }
+
         const clipBoard = document.getElementById("legend-icon");
+        
         clipBoard.addEventListener("click", showOrHideLegend);
         return function cleanup (){
             clipBoard.removeEventListener("click", showOrHideLegend);
         }
-    });
+    }, [legendDisplay]);
 
 
     useEffect(() => {
         if(bobaFettFound){
             document.getElementById("legend-boba").style.color = "red";
             document.getElementById("legend-boba").style.textDecoration = "line-through";
-
         }
         if(vaultBoyFound){
             document.getElementById("legend-vault-boy").style.color = "red";
             document.getElementById("legend-vault-boy").style.textDecoration = "line-through";
-
         }
         if(samusFound){
             document.getElementById("legend-samus").style.color = "red";
             document.getElementById("legend-samus").style.textDecoration = "line-through";
-
         }
     
     }, [bobaFettFound, vaultBoyFound, samusFound]);
 
 
     useEffect(() => {
+
+        function showHints () {
+            document.getElementById("hints").style.display = "flex";
+           }
+
         const showHintsButton = document.getElementById("showHints");
         showHintsButton.addEventListener("click", showHints);
         return function cleanup(){
             showHintsButton.removeEventListener("click", showHints);
         }
-    });
+    }, []);
 
     useEffect(() => {
+
+        function hideHints () {
+            document.getElementById("hints").style.display = "none";
+          }
+
         const hideHintsButton = document.getElementById("hideHints");
         hideHintsButton.addEventListener("click", hideHints);
         return function cleanup(){
             hideHintsButton.removeEventListener("click", hideHints);
         }
-    });
-
-        // need to change cursor when hovering above clipboard for gamelegend
-    function showHints () {
-       document.getElementById("hints").style.display = "flex";
-      }
-
-      function hideHints () {
-        document.getElementById("hints").style.display = "none";
-      }
-
-    const showOrHideLegend = () => {
-        if (legendDisplay === true){
-            document.getElementById("legendWrapper").className = "legend-hidden";
-            document.getElementById("legendList").style.display = "none";
-            setLegendDisplay(false);
-        }else{
-            document.getElementById("legendWrapper").className = "legend-shown";
-            document.getElementById("legendList").style.display = "flex";
-            setLegendDisplay(true);
-        }
-    }
+    }, []);
 
 return ( 
 <div id="legend" >

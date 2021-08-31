@@ -6,10 +6,6 @@ import VaultBoy from "./images/vault-boy-wanted.jpg";
 import Samus from "./images/samus-wanted.jpg";
 
 const StartScreen = () => {
-    const disclaimer = {
-            fontSize: 20,
-            fontStyle: 'italic'
-    }
 
 return (
     <div id="start-screen" className="start-screen">
@@ -23,6 +19,7 @@ return (
             <img alt="samus from metroid" className="mugshot" src={Samus} />
             <img alt="boba fett" className="mugshot" src={Boba} />
         </div>
+        
         <Link to="/GameBoard" >
             <button id="game-start" className="start-button">START GAME</button>
         </Link>
