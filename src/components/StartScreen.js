@@ -20,7 +20,7 @@ const StartScreen = () => {
         <img alt="boba fett" className="mugshot" src={Boba} />
       </div>
 
-      <Link to="/GameBoard">
+      <Link to="/wheres-waldo-app/GameBoard">
         <button id="game-start" className="start-button">
           START GAME
         </button>

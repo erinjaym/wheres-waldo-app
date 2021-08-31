@@ -10,9 +10,9 @@ function App() {
     <BrowserRouter>
       <div>
         <Switch>
-          <Route exact path="/" component={StartScreen} />
-          <Route exact path="/GameBoard" component={GameBoard} />
-          <Route exact path="/HighScores" component={HighScores} />
+          <Route exact path="/wheres-waldo-app" component={StartScreen} />
+          <Route exact path="/wheres-waldo-app/GameBoard" component={GameBoard} />
+          <Route exact path="/wheres-waldo-app/HighScores" component={HighScores} />
         </Switch>
       </div>
     </BrowserRouter>

@@ -9,11 +9,11 @@ const HighScores = () => {
     <div className="high-scores-page">
       <div>High Scores!</div>
       <li>{highScores}</li>
-      <Link to="/">
+      <Link to="/wheres-waldo-app">
         {" "}
         <button className="alert-button">Return to Start Screen</button>{" "}
       </Link>
-      <Link to="/GameBoard">
+      <Link to="/wheres-waldo-app/GameBoard">
         <button className="alert-button">Play Again</button>
       </Link>
     </div>
