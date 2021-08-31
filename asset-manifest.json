@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/wheres-waldo-app/static/css/main.aa1b0205.chunk.css",
+    "main.js": "/wheres-waldo-app/static/js/main.af135c4a.chunk.js",
+    "main.js.map": "/wheres-waldo-app/static/js/main.af135c4a.chunk.js.map",
+    "runtime-main.js": "/wheres-waldo-app/static/js/runtime-main.86ec554d.js",
+    "runtime-main.js.map": "/wheres-waldo-app/static/js/runtime-main.86ec554d.js.map",
+    "static/js/2.77e4f3d8.chunk.js": "/wheres-waldo-app/static/js/2.77e4f3d8.chunk.js",
+    "static/js/2.77e4f3d8.chunk.js.map": "/wheres-waldo-app/static/js/2.77e4f3d8.chunk.js.map",
+    "index.html": "/wheres-waldo-app/index.html",
+    "static/css/main.aa1b0205.chunk.css.map": "/wheres-waldo-app/static/css/main.aa1b0205.chunk.css.map",
+    "static/js/2.77e4f3d8.chunk.js.LICENSE.txt": "/wheres-waldo-app/static/js/2.77e4f3d8.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/wheres-waldo-app/static/media/arcade-regular.0908c501.ttf",
+    "static/media/assignment.b67ae66d.svg": "/wheres-waldo-app/static/media/assignment.b67ae66d.svg",
+    "static/media/boba-wanted.4e9efe22.jpg": "/wheres-waldo-app/static/media/boba-wanted.4e9efe22.jpg",
+    "static/media/samus-wanted.aaaf0393.jpg": "/wheres-waldo-app/static/media/samus-wanted.aaaf0393.jpg",
+    "static/media/sfpic.0709606a.png": "/wheres-waldo-app/static/media/sfpic.0709606a.png",
+    "static/media/vault-boy-wanted.d44d4653.jpg": "/wheres-waldo-app/static/media/vault-boy-wanted.d44d4653.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.86ec554d.js",
+    "static/js/2.77e4f3d8.chunk.js",
+    "static/css/main.aa1b0205.chunk.css",
+    "static/js/main.af135c4a.chunk.js"
+  ]
+}
