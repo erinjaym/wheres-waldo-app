@@ -21,7 +21,7 @@ const AlertWindow = (props) => {
 
   if (gameOver) {
     button = (
-      <Link to="/HighScores">
+      <Link to="/wheres-waldo-app/HighScores">
         {" "}
         <button className="alert-button">See High Scores</button>
       </Link>
