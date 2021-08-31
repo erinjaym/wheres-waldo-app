@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const HighScores = () => {
 
-    let highScores = "Import data from firebase server";
+    let highScores = "Import data from firebase server ...Check back for time run and firebase integration";
 
 return (
     <div className="high-scores-page">
