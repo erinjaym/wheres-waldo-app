@@ -1,35 +1,21 @@
-import './App.css';
-import './components/fonts/arcade-regular.ttf';
+import "./App.css";
+import "./components/fonts/arcade-regular.ttf";
 import StartScreen from "./components/StartScreen";
-import GameBoard from './components/GameBoard';
-import HighScores from './components/HighScores';
+import GameBoard from "./components/GameBoard";
+import HighScores from "./components/HighScores";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
-
   return (
-    <BrowserRouter >    
-    <div>
-      <Switch>
-      <Route 
-          exact
-          path="/" 
-          component={StartScreen}
-          /> 
-      <Route
-            exact
-            path="/GameBoard"
-            component={GameBoard}
-          />
-      <Route
-            exact
-            path="/HighScores"
-            component={HighScores}
-          />
-      </Switch>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route exact path="/" component={StartScreen} />
+          <Route exact path="/GameBoard" component={GameBoard} />
+          <Route exact path="/HighScores" component={HighScores} />
+        </Switch>
+      </div>
     </BrowserRouter>
-
   );
 }
 
