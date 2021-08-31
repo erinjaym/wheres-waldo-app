@@ -1,72 +1,204 @@
 @font-face {
-    font-family: "ArcadeRegular";
-    src: local("ArcadeRegular"),
+  font-family: "ArcadeRegular";
+  src: local("ArcadeRegular"),
     url("./components/fonts/arcade-regular.ttf") format("truetype");
-  }
-  
+}
+
+.alert-button {
+  background-color: rgba(169, 169, 169, 0.137);
+  border: 2px dotted rgb(239, 241, 238);
+  color: white;
+  cursor: pointer;
+  font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+  font-size: 1.2em;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.alert-button:hover {
+  background-color: white;
+  border: 2px dotted rgb(17, 71, 1);
+  color: rgb(13, 49, 2);
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.alert-popup {
+  align-items: center;
+  background-color: rgba(38, 95, 60, 0.788);
+  border: 1px dotted white;
+  border-top: solid 8px white;
+  color: white;
+  display: none;
+  font-size: 2em;
+  font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+  flex-direction: column;
+  height: 400px;
+  justify-content: space-around;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  z-index: 4;
+}
+
 body {
-background-color: rgb(28, 102, 6);
-color: white;
+  background-color: rgb(28, 102, 6);
+  color: white;
 }
 
-.start-screen{
-align-items: center;
-background-color: rgba(38, 95, 60, 0.788);
-border: 1px dotted white;
-border-top: solid 8px white;
-color: white;
-display: flex;
-flex-direction: column;
-font-family: "ArcadeRegular", "Times New Roman", Times, serif;
-font-size: 2em;
-height: 600px;
-justify-content: space-around;
-left: 50%;
-padding: 10px;
-position: fixed;
-top: 30%;
-transform: translate(-50%, -30%);
-width: 600px;
+.found-boba-circle {
+  border: 5px solid rgb(0, 255, 42);
+  border-radius: 50%;
+  display: inline-block;
+  height: 40px;
+  left: 478px;
+  position: absolute;
+  top: 992px;
+  width: 40px;
 }
 
-.wanted-items{
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-template-rows: auto;
-font-size: 2em;
-height: 250px;
-width: auto;
+.found-boba-mark {
+  border-bottom: 7px solid rgb(0, 255, 42);
+  border-right: 7px solid rgb(0, 255, 42);
+  display: inline-block;
+  height: 24px;
+  left: 498px;
+  position: absolute;
+  top: 992px;
+  transform: rotate(45deg);
+  width: 12px;
 }
 
-.mugshot{
-height: 250px;
-width: auto;
+.found-samus-circle {
+  display: inline-block;
+  border-radius: 50%;
+  border: 5px solid rgb(0, 255, 42);
+  height: 40px;
+  left: 1175px;
+  position: absolute;
+  top: 1320px;
+  width: 40px;
 }
 
-.start-button{
-background-color: rgba(169, 169, 169, 0.137);
-border: 2px dotted rgb(239, 241, 238);
-cursor: pointer;
-padding-top: 10px;
-font-family: "ArcadeRegular", "Times New Roman", Times, serif;
-color: white;
-font-size: 1.2em;
-text-align: center;
+.found-samus-mark {
+  border-bottom: 7px solid rgb(0, 255, 42);
+  border-right: 7px solid rgb(0, 255, 42);
+  display: inline-block;
+  height: 24px;
+  left: 1195px;
+  position: absolute;
+  top: 1320px;
+  transform: rotate(45deg);
+  width: 12px;
 }
 
-.start-button:hover{
-    background-color: white;
-    border: 2px dotted rgb(17, 71, 1);
-    color: rgb(13, 49, 2);
-    font-size: 1.2em;
-    text-align: center;
-}
-    
-.instructions{
-align-items: center;
-text-align: center;
+.found-vaultboy-circle {
+  border: 5px solid rgb(0, 255, 42);
+  border-radius: 50%;
+  display: inline-block;
+  height: 40px;
+  left: 161px;
+  position: absolute;
+  top: 556px;
+  width: 40px;
 }
 
+.found-vaultboy-mark {
+  border-bottom: 7px solid rgb(0, 255, 42);
+  border-right: 7px solid rgb(0, 255, 42);
+  display: inline-block;
+  height: 24px;
+  left: 181px;
+  position: absolute;
+  top: 556px;
+  transform: rotate(45deg);
+  width: 12px;
+}
+
+.game-container {
+  background-color: rgba(103, 105, 105, 0);
+  border: 50px rgb(28, 102, 6) solid;
+  height: 1528px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1712px;
+  z-index: 2;
+}
+
+.game-image {
+  cursor: pointer;
+  left: 0px;
+  position: relative;
+  top: 0px;
+}
+
+.high-scores-page {
+  align-items: center;
+  background-color: rgba(38, 95, 60, 0.788);
+  border: 1px dotted white;
+  border-top: solid 8px white;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+  font-size: 2em;
+  height: 600px;
+  justify-content: space-around;
+  left: 50%;
+  padding: 10px;
+  position: fixed;
+  top: 30%;
+  transform: translate(-50%, -30%);
+  width: 600px;
+}
+
+.hints-box {
+  align-items: center;
+  background-color: green;
+  border: 5px white dashed;
+  display: none;
+  flex-direction: column;
+  height: 300px;
+  left: 50%;
+  justify-content: center;
+  position: fixed;
+  top: 50px;
+  width: 300px;
+  z-index: 2;
+}
+
+.hint-pic {
+  border-radius: 50%;
+}
+
+.instructions {
+  align-items: center;
+  text-align: center;
+}
+
+.legendList {
+  display: none;
+  flex-direction: column;
+  font-family: ArcadeRegular;
+}
+
+.legendList li {
+  list-style-type: none;
+  text-align: center;
+  text-decoration: none;
+}
+
+.legendList span {
+  text-decoration: underline;
+}
+
+.legendList span:hover {
+  color: rgb(5, 235, 5);
+  text-decoration: underline;
+}
 
 .legend-hidden {
   align-content: center;
@@ -80,266 +212,123 @@ text-align: center;
   transition: all ease-in 1s;
   width: 50px;
   z-index: 2;
-  }
-
-.legend-shown {
-background-color: rgba(38, 95, 60, 0.788);
-border-top: 8px solid rgb(28, 102, 6);
-cursor: pointer;
-display: flex;
-font-family: ArcadeRegular;
-font-size: 2em;
-height: 300px;
-justify-content: center;
-position: fixed;
-right: 0px;
-top: 50px;
-transition: all linear 1s;
-width: 400px;
-z-index: 2;
 }
-
-.legendList{
-  display: none;
-  flex-direction: column;
-  font-family: ArcadeRegular;
-}
-
-.legendList li{
-  list-style-type: none;
-  text-align: center;
-  text-decoration: none;
-  }
-
-  .legendList span{
-    text-decoration: underline;
-    }
-
-  .legendList span:hover{
-    text-decoration: underline;
-    color: rgb(5, 235, 5);
-    }
 
 .legend-icon {
-align-content: center;
-background-color: rgba(169, 169, 169, 0.459);
-cursor: pointer;
-width: 50px;
-height: 50px;
-position: fixed;
-right: 150px;
-top: 0;
-z-index: 2;
-}
-
-
-.hint-pic{
-border-radius: 50%;
-}
-
-.game-container {
-    width: 1712px;
-    height: 1528px;
-    background-color: rgba(103, 105, 105, 0);
-    border: 50px rgb(28, 102, 6) solid;
-    z-index: 2;  
-    position: absolute;
-    top: 0;  
-    left: 0;  
-}
-
-.game-image{
+  align-content: center;
+  background-color: rgba(169, 169, 169, 0.459);
   cursor: pointer;
-  top: 0px;
-  left: 0px;
-  position: relative;
-  }
-  
-  .scrolled {
-    background-color: lightgreen;
-    position: fixed;
-    top: 0;
-    transition: all 0.2s ease-in;
-  }
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 150px;
+  top: 0;
+  z-index: 2;
+}
 
+.legend-shown {
+  background-color: rgba(38, 95, 60, 0.788);
+  border-top: 8px solid rgb(28, 102, 6);
+  cursor: pointer;
+  display: flex;
+  font-family: ArcadeRegular;
+  font-size: 2em;
+  height: 300px;
+  justify-content: center;
+  position: fixed;
+  right: 0px;
+  top: 50px;
+  transition: all linear 1s;
+  width: 400px;
+  z-index: 2;
+}
 
-  .tag-frame{
-    border: 5px solid rgb(229, 231, 231);
-    height: 100px;
-    width: 100px;
-  }
+.mugshot {
+  height: 250px;
+  width: auto;
+}
 
-  .tag-options{
+.scrolled {
+  background-color: lightgreen;
+  position: fixed;
+  top: 0;
+  transition: all 0.2s ease-in;
+}
+
+.start-button {
+  background-color: rgba(169, 169, 169, 0.137);
+  border: 2px dotted rgb(239, 241, 238);
   color: white;
-  background: rgba(38, 95, 60, 0.788);
-  padding-top: 2px;
-  font-size: 1.5em;
+  cursor: pointer;
+  padding-top: 10px;
   font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+  font-size: 1.2em;
   text-align: center;
-  width: 110px;
+}
 
-  }
+.start-button:hover {
+  background-color: white;
+  border: 2px dotted rgb(17, 71, 1);
+  color: rgb(13, 49, 2);
+  font-size: 1.2em;
+  text-align: center;
+}
 
-  .tag-options li{
-    cursor: pointer;
-    border: 1px solid white;
-    padding-top: 4px;
-    list-style-type: none;
-  }
-
-  .tag-options li:hover{
-    background: white;
-    border: 1px solid darkred;
-    color: darkred;
-    list-style-type: none;
-  }
-
-.hints-box{
-align-items: center;
-background-color: green;
-border: 5px white dashed;
-display: none;
-height: 300px;
-left: 50%;
-justify-content: center;
-flex-direction: column;
-position: fixed;
-top: 50px;
-width: 300px;
-z-index: 3;
-  }
-
-
-  .found-samus-mark {
-    border-bottom: 7px solid rgb(0, 255, 42);
-    border-right: 7px solid rgb(0, 255, 42);
-    display: inline-block;
-    top: 1320px;
-    left: 1195px;
-    position: absolute;
-    height: 24px;
-    transform: rotate(45deg);
-    width: 12px;
-  }
-
-
-  .samus-circle {
-    height: 40px;
-    width: 40px;
-    display: inline-block;
-    position: absolute;
-    border-radius: 50%;
-    border: 5px solid rgb(0, 255, 42);
-    top: 1320px;
-    left: 1175px;
-    }
-
-
-  .found-boba-mark {
-    border-bottom: 7px solid rgb(0, 255, 42);
-    border-right: 7px solid rgb(0, 255, 42);
-    display: inline-block;
-    top: 992px;
-    left: 498px;
-    position: absolute;
-    height: 24px;
-    transform: rotate(45deg);
-    width: 12px;
-  }
-
-  .bf-circle {
-    height: 40px;
-    width: 40px;
-    display: inline-block;
-    position: absolute;
-    border-radius: 50%;
-    border: 5px solid rgb(0, 255, 42);
-    top: 992px;
-    left: 478px;
-  }
-
-
-
-  .found-vaultboy-mark {
-    border-bottom: 7px solid rgb(0, 255, 42);
-    border-right: 7px solid rgb(0, 255, 42);
-    display: inline-block;
-    top: 556px;
-    left: 181px;
-    position: absolute;
-    height: 24px;
-    transform: rotate(45deg);
-    width: 12px;
-  }
-
-  .vb-circle {
-    height: 40px;
-    width: 40px;
-    display: inline-block;
-    position: absolute;
-    border-radius: 50%;
-    border: 5px solid rgb(0, 255, 42);
-    top: 556px;
-    left: 161px;
-  }
-
-
-.alert-popup{
+.start-screen {
   align-items: center;
   background-color: rgba(38, 95, 60, 0.788);
   border: 1px dotted white;
   border-top: solid 8px white;
   color: white;
-  display: none;
-  font-size: 2em;
-  font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+  display: flex;
   flex-direction: column;
-  height: 400px;
+  font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+  font-size: 2em;
+  height: 600px;
   justify-content: space-around;
-  width: 600px;
-  position: fixed;
-  top: 50%;
   left: 50%;
-  z-index: 4;
-  transform: translate(-50%, -50%);
-  }
+  padding: 10px;
+  position: fixed;
+  top: 30%;
+  transform: translate(-50%, -30%);
+  width: 600px;
+}
 
-  .alert-button{
-    background-color: rgba(169, 169, 169, 0.137);
-    border: 2px dotted rgb(239, 241, 238);
-    cursor: pointer;
-    padding-top: 10px;
-    font-family: "ArcadeRegular", "Times New Roman", Times, serif;
-    color: white;
-    font-size: 1.2em;
-    text-align: center;
-    }
-    
-    .alert-button:hover{
-        background-color: white;
-        border: 2px dotted rgb(17, 71, 1);
-        color: rgb(13, 49, 2);
-        font-size: 1.2em;
-        text-align: center;
-    }
+.tag-frame {
+  border: 5px solid rgb(229, 231, 231);
+  height: 100px;
+  width: 100px;
+}
 
+.tag-options {
+  background: rgba(38, 95, 60, 0.788);
+  color: white;
+  font-size: 1.5em;
+  font-family: "ArcadeRegular", "Times New Roman", Times, serif;
+  padding-top: 2px;
+  text-align: center;
+  width: 110px;
+}
 
-    .high-scores-page{
-align-items: center;
-background-color: rgba(38, 95, 60, 0.788);
-border: 1px dotted white;
-border-top: solid 8px white;
-color: white;
-display: flex;
-flex-direction: column;
-font-family: "ArcadeRegular", "Times New Roman", Times, serif;
-font-size: 2em;
-height: 600px;
-justify-content: space-around;
-left: 50%;
-padding: 10px;
-position: fixed;
-top: 30%;
-transform: translate(-50%, -30%);
-width: 600px;
-    }
+.tag-options li {
+  cursor: pointer;
+  border: 1px solid white;
+  list-style-type: none;
+  padding-top: 4px;
+}
+
+.tag-options li:hover {
+  background: white;
+  border: 1px solid darkred;
+  color: darkred;
+  list-style-type: none;
+}
+
+.wanted-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  font-size: 2em;
+  height: 250px;
+  width: auto;
+}

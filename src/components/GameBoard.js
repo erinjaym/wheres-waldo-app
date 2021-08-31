@@ -185,17 +185,17 @@ return (
           
           <div id="bf" style={ {display: "none"} }>
             <div id="bfm" className="found-boba-mark"/>
-            <div id="bf-circle" className="bf-circle "/>
+            <div id="bf-circle" className="found-boba-circle"/>
           </div>
 
           <div id="vb" style={ {display: "none"} }>
             <div id="vbm" className="found-vaultboy-mark"/>
-            <div id="vb-circle" className="vb-circle "/>
+            <div id="vb-circle" className="found-vaultboy-circle"/>
           </div>
 
           <div id="s" style={ {display: "none"} }>
             <div id="sm" className="found-samus-mark"/>
-            <div id="s-circle" className="samus-circle "/>
+            <div id="s-circle" className="found-samus-circle"/>
           </div>
 
         </div>
