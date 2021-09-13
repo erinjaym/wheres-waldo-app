@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 import GameLegend from "./GameLegend";
 import TagBox from "./TagBox";
 import AlertWindow from "./AlertWindow";
+import Timer from "./Timer";
+import { Timestamp } from 'firebase/firestore/lite';
 
-const GameBoard = () => {
+const GameBoard = (props) => {
   const [xPosition, setXPosition] = useState(0);
   const [yPosition, setYPosition] = useState(0);
 
@@ -30,6 +32,23 @@ const GameBoard = () => {
     { name: "Samus", xStart: 1160, xEnd: 1219, yStart: 1303, yEnd: 1385 },
   ];
 
+  const hideTimer = () => {
+    let timer = document.getElementById('timer-display');
+    timer.style.display = "none";
+  };
+
+  const showTagBox = () => {
+    setTagBoxDisplay(true);
+  };
+
+  const hideTagBox = () => {
+    setTagBoxDisplay(false);
+  };
+
+  const hideAlert = () => {
+    setAlertWindowDisplay(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const yOffset = window.scrollY;
@@ -51,12 +70,10 @@ const GameBoard = () => {
   useEffect(() => {
     const handleClick = (e) => {
       showTagBox();
-      let xPos = e.clientX - 50; // -50 to account for image border on left (only applicable before x scroll)
-      let yPos = e.clientY - 50; // -50 to account for image border on top (only applicable before y scroll
+      let xPos = e.clientX - 50; // -50 to account for image border on left
+      let yPos = e.clientY - 50; // -50 to account for image border on top
       xPos = xPos + xScrolled; // center box on selection
       yPos = yPos + yScrolled;
-      console.log("Y START IS: " + yPos);
-      console.log("X START IS: " + xPos);
       setXPosition(xPos);
       setYPosition(yPos);
       return;
@@ -72,7 +89,6 @@ const GameBoard = () => {
           .removeEventListener("click", handleClick);
       };
     } else {
-      console.log("Games over! Dont need to do anything!");
     }
   });
 
@@ -111,9 +127,10 @@ const GameBoard = () => {
 
   useEffect(() => {
     function gameEnd() {
-      setAlertWindowText("Good Job! You found everyone! ");
-      setGameFinished(true);
+      setAlertWindowText("Good Job! You found everyone!");
+      hideTimer();
       setAlertWindowDisplay(true);
+      setGameFinished(true);
     }
 
     if (foundVaultBoy && foundBobaFett && foundSamus) {
@@ -121,6 +138,12 @@ const GameBoard = () => {
     }
   }, [foundVaultBoy, foundBobaFett, foundSamus]);
 
+    if (gameFinished){
+      let endTime = Timestamp.now();
+      let theEndTime = endTime.seconds;
+        props.calcTime(theEndTime);
+      }
+  
   function getCharacterLocation(characterName) {
     let characterList = characterArray;
     for (let character = 0; character <= characterList.length; character++) {
@@ -135,7 +158,7 @@ const GameBoard = () => {
     let character = getCharacterLocation(characterName);
 
     if (checkXAxis() && checkYAxis()) {
-      hideTagBox(); // may need to change this location
+      hideTagBox();
       if (character.name === "Samus") {
         setFoundSamus(true);
       } else if (character.name === "Boba Fett") {
@@ -171,20 +194,11 @@ const GameBoard = () => {
     }
   }
 
-  const showTagBox = () => {
-    setTagBoxDisplay(true);
-  };
-
-  const hideTagBox = () => {
-    setTagBoxDisplay(false);
-  };
-
-  const hideAlert = () => {
-    setAlertWindowDisplay(false);
-  };
-
   return (
     <div id="game-container" className="game-container">
+      <Timer 
+      gameFinished={gameFinished}
+      /> 
       <GameLegend
         bobaFettStatus={foundBobaFett}
         vaultBoyStatus={foundVaultBoy}
@@ -226,7 +240,12 @@ const GameBoard = () => {
         alertWindowDisplay={alertWindowDisplay}
         dismiss={hideAlert}
         gameFinished={gameFinished}
+
       />
+      <div id="credits" className="image-credit">
+        Image borrowed from the amazing creators @ <a href="http://pixeljoint.com/forum/forum_posts.asp?TID=23697">Pixel Joint</a>
+      </div>
+      
     </div>
   );
 };

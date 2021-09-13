@@ -5,6 +5,7 @@ const AlertWindow = (props) => {
   let windowText = props.alertWindowText;
   let windowDisplay = props.alertWindowDisplay;
   let gameOver = props.gameFinished;
+
   let button = (
     <button className="alert-button" onClick={() => props.dismiss()}>
       Sweet
@@ -23,7 +24,7 @@ const AlertWindow = (props) => {
     button = (
       <Link to="/wheres-waldo-app/HighScores">
         {" "}
-        <button className="alert-button">See High Scores</button>
+        <button className="alert-button">See Your Score!</button>
       </Link>
     );
   }

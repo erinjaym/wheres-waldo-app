@@ -5,12 +5,12 @@ import Boba from "./images/boba-wanted.jpg";
 import VaultBoy from "./images/vault-boy-wanted.jpg";
 import Samus from "./images/samus-wanted.jpg";
 
-const StartScreen = () => {
+const StartScreen = (props) => {
   return (
     <div id="start-screen" className="start-screen">
       <div id="instructions" className="instructions">
         <p>
-          Track down these dangerous individuals so our teams can take them out!{" "}
+          Track down these dangerous individuals!
         </p>
       </div>
 
@@ -21,7 +21,7 @@ const StartScreen = () => {
       </div>
 
       <Link to="/wheres-waldo-app/GameBoard">
-        <button id="game-start" className="start-button">
+        <button id="game-start" className="start-button" onClick={() => props.initializeGame()}>
           START GAME
         </button>
       </Link>

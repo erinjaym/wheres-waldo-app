@@ -4,13 +4,37 @@
     url("./components/fonts/arcade-regular.ttf") format("truetype");
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+  text-align: center;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+  text-align: center;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+  text-align: center;
+}
+
+a{
+  color: rgb(5, 235, 5);
+}
+
+a:hover{
+  color: black;
+}
+
 .alert-button {
   background-color: rgba(169, 169, 169, 0.137);
   border: 2px dotted rgb(239, 241, 238);
   color: white;
   cursor: pointer;
   font-family: "ArcadeRegular", "Times New Roman", Times, serif;
-  font-size: 1.2em;
+  font-size: 1em;
   padding-top: 10px;
   text-align: center;
 }
@@ -19,7 +43,7 @@
   background-color: white;
   border: 2px dotted rgb(17, 71, 1);
   color: rgb(13, 49, 2);
-  font-size: 1.2em;
+  font-size: 1em;
   text-align: center;
 }
 
@@ -144,15 +168,26 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "ArcadeRegular", "Times New Roman", Times, serif;
-  font-size: 2em;
-  height: 600px;
+  font-size: 2.5em;
+  height: 700px;
   justify-content: space-around;
   left: 50%;
   padding: 10px;
   position: fixed;
   top: 30%;
   transform: translate(-50%, -30%);
-  width: 600px;
+  width: 700px;
+}
+
+.highscore-input{
+  background-color: rgb(69, 105, 83);
+  border: 2px solid white;
+  color: white;
+  font-size: 20px;
+  height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 200px;
 }
 
 .hints-box {
@@ -173,6 +208,15 @@ body {
 .hint-pic {
   border-radius: 50%;
 }
+
+.image-credit{
+  width: 600px;
+  font-size: 20px;
+  position: relative;
+  left: 50%;
+  transform: translate( -300px, 0 );
+  z-index:0
+  }
 
 .instructions {
   align-items: center;
@@ -323,6 +367,31 @@ body {
   color: darkred;
   list-style-type: none;
 }
+
+th{
+  text-align: center;
+  color: red;
+  font-size: 1.2em;
+  text-decoration: underline;
+  }
+  
+  td{
+  text-align: center;
+  width: 230px;
+  border-bottom: 1px green solid;
+  }
+
+.timer-display{
+  background-color: rgba(169, 169, 169, 0.137);
+  color: white;
+  font-size: 2em;
+  height: auto;
+  left: 150px;
+  position: fixed;
+  top: 0;
+  width: auto;
+  z-index: 2;
+  }
 
 .wanted-items {
   display: grid;
